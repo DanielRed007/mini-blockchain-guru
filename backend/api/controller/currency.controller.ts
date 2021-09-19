@@ -1,15 +1,23 @@
 import axios from "axios";
+import { Request, Response } from "express";
 
 class CurrencyController{
 
-    async getAllCurrencies(req:any,res:any){       
+    async getAllCurrencies(req:Request,res:Response){      
         try {
-            // curl "https://api.nomics.com/v1/currencies/sparkline?key=your-key-here&ids=BTC,ETH,XRP&start=2018-04-14T00%3A00%3A00Z&end=2018-05-14T00%3A00%3A00Z"
-            axios
-                .get(`https://api.nomics.com/v1/currencies/sparkline?key${process.env.API_NOMICS_KEY}`)
-                .then((response:any) => {
-                    console.log(response);
-                });
+            const response = await axios.get(`${process.env.API_NOMICS_URI}/currencies/ticker?key=${process.env.API_NOMICS_KEY}&interval=1d&convert=USD&per-page=10&page=1`);
+            const currencies = response.data;
+            res.json(currencies);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+
+    async getAllCurrencyInfo(req:Request,res:Response){      
+        try {
+            const response = await axios.get(`${process.env.API_NOMICS_URI}/currencies?key=${process.env.API_NOMICS_KEY}&ids=BTC,ETH,XRP&attributes=id,name,logo_url`);
+            const currencies = response.data;
+            res.json(currencies);
         } catch (error) {
             res.status(500).json(error);
         }

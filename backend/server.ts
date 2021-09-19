@@ -14,7 +14,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
-    // https://api.nomics.com/v1/markets?key=your-key-here
     res.send("Api OK!");
 });
 

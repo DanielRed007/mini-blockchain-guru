@@ -25,7 +25,6 @@ export interface Currency {
     rank_delta: string;
     high: string;
     high_timestamp: string;
-    "1d": null;
 }
 
 /* 
