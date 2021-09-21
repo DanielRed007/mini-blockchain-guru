@@ -1,7 +1,7 @@
-
-export interface Currency {
+import { ObjectId } from "mongoose";
+export interface ICurrency {
+    _id: ObjectId;
     currency: string;
-    id: string,
     status: string;
     price: string;
     pricedate: Date;

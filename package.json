@@ -8,7 +8,8 @@
     "server": "nodemon --inspect=5858 -r ts-node/register ./backend/server.ts",
     "server:watch": "nodemon",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client --port 4500\""
+    "dev": "concurrently \"npm run server\" \"npm run client --port 4500\"",
+    "data:seed": "mongoimport --db blockchain-guru --collection currency --type=json  --file ./backend/data/seed/currency.json --jsonArray"
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongoose": "^6.0.6"
+    "mongoose": "^6.0.7"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
