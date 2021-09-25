@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 // Routes
 import currency from "./api/routes/currency.route";
+import user from "./api/routes/user.route";
 // Config
 import { connectDB } from "./config/dbConnection";
 
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/currency", currency);
+app.use("/api/auth", user);
 
 app.listen(port, () => {
     console.log(`Server running in ${process.env.NODE_ENV} on port: ${port}`);

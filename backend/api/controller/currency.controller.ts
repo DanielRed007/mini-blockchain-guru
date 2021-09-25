@@ -29,8 +29,10 @@ class CurrencyController{
         try {
             const currencies = await Currency.find();
             if(!currencies){
-                return res.status(200).json({message: "No currencies at the moment"});
+                return res.status(404).json({message: "No currencies at the moment"});
             }
+
+            res.status(200).json(currencies);
         } catch (error) {
             return res.status(500).json(error);
         }
