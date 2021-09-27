@@ -6,5 +6,6 @@ const router = express.Router();
 
 router.get("/all", currencyController.getAllCurrencies);
 router.get("/info/all", currencyController.getCurrencies);
+router.get("/:id", currencyController.getCurrencyById);
 
 export default router;

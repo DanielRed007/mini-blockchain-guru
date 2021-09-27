@@ -33,7 +33,7 @@ let CurrencySchema = new Schema(
     high: { type: String },
     high_timestamp: { type: String },
   },
-  { collection: "currency" }
+  { collection: "currency", typeKey: "$type" }
 );
 
-export default mongoose.model<ICurrency>("Currency", CurrencySchema);
+export default mongoose.model("Currency", CurrencySchema);

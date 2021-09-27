@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Request, Response } from "express";
+import { ObjectId } from "mongodb";
 import Currency from "../../schema/currency.model";
 
 class CurrencyController{
@@ -33,6 +34,21 @@ class CurrencyController{
             }
 
             res.status(200).json(currencies);
+        } catch (error) {
+            return res.status(500).json(error);
+        }
+    }
+
+    async getCurrencyById(req:Request,res:Response){
+        const currencyId = new ObjectId(req.params.id);
+
+        try {
+            const currency = await Currency.findOne({_id: currencyId});
+            if(!currency){
+                return res.status(404).json({message: "Currency not found"});
+            }
+
+            res.status(200).json(currency);
         } catch (error) {
             return res.status(500).json(error);
         }
