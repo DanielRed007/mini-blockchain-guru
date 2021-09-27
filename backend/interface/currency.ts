@@ -1,6 +1,6 @@
 import { ObjectId } from "mongoose";
 export interface ICurrency {
-    _id: ObjectId;
+    _id: string;
     currency: string;
     status: string;
     price: string;
