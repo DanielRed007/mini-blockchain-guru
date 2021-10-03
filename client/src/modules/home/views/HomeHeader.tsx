@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Button } from 'semantic-ui-react';
 
 export const HomeHeader: React.FC = (props:any) => {
     return (
@@ -7,8 +7,8 @@ export const HomeHeader: React.FC = (props:any) => {
             <Grid>
                 <Grid.Column style={{textAlign: "center", lineHeight: "0.1"}}>
                     <h1 style={{fontSize: "48px",color:'white', lineHeight: "0.9"}}>BlockChain & Cryptocurrency</h1>
-                    <h4 style={{fontSize: "24px",color:'white', lineHeight: "0.9"}}>Live Markets</h4>
-                    <h4 style={{fontSize: "24px",color:'white', lineHeight: "0.9"}}>Live Info</h4>
+                    <h4 style={{fontSize: "32px",color:'white', lineHeight: "0.9"}}>Live Markets</h4>
+                    <Button primary>Explore</Button>
                 </Grid.Column>
             </Grid>            
         </div>

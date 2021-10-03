@@ -13,7 +13,12 @@ const Home: React.FC = (props:any) => {
                     <HomeHeader />
                 </div>
             </Container>
-            <Container style={{backgroundColor: "red"}} fluid>
+            <Container style={{}} fluid>
+                <div style={{ width: "70%", margin: "0 auto"}}>  
+                    <GoalsHeader />
+                </div>
+            </Container>
+            <Container style={{}} fluid>
                 <div style={{ width: "70%", margin: "0 auto"}}>  
                     <GoalsHeader />
                 </div>
