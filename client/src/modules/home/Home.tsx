@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Header, Grid } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import Navbar from "../../shared/navbar/Navbar";
 import { HomeHeader } from "./views/HomeHeader";
 import { GoalsHeader } from "./views/GoalsHeader";
@@ -20,7 +20,7 @@ const Home: React.FC = (props:any) => {
             </Container>
             <Container style={{}} fluid>
                 <div style={{ width: "70%", margin: "0 auto"}}>  
-                    <GoalsHeader />
+                    {/* Here we put the graphics later... */}
                 </div>
             </Container>
         </>

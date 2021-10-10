@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Segment, Container, Header } from 'semantic-ui-react';
+import { Grid, Segment } from 'semantic-ui-react';
 
 export const GoalsHeader: React.FC = (props:any) => {
     return (
