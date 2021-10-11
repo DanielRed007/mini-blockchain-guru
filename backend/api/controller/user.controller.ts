@@ -8,26 +8,20 @@ class UserController{
 
     async authenticateUser(req:Request,res:Response){
         const { email, password } = req.body;      
-        try {
-            const user = await User.findOne({ email });
+        const user = await User.findOne({ email });
 
-            if (user && matchPassword(user.password, password)){
-                const token = jwt.sign({ user: user._id }, process.env.JWT as string);
+        if (user && matchPassword(user.password, password) && user.email === email){
+            const token = jwt.sign({ user: user._id }, process.env.JWT as string);
 
-                res.json({
-                    _id: user._id,
-                    name: user.name,
-                    email: user.email,
-                    token: token
-                });
-            } else {
-                res.status(401)
-                throw new Error("Invalid Email or Password");
-            }
-        } catch (error) {
-            console.log(error);
-            res.status(500).json(error);
-        }
+            res.json({
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                token: token
+            });
+        } else {
+            res.status(401).json({error: "Verify your access data, Unauthorized Access."});
+        };
     }
 
     async registerUser(req:Request,res: Response){

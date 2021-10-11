@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { Container, Input, Button, Form } from 'semantic-ui-react';
+import { loginUser } from "../../state/actions/authActions";
 
 const Login = (props:any) => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const dispatch = useDispatch();
+
+    const auth = useSelector((state:any) => state.auth);
     
-    const loginUser = () => {
-        console.log("Here!")
+    const loginHandler = (e: React.FormEvent<any>) => {
+        e.preventDefault();
+        console.log(email, password);
+        dispatch(loginUser(email, password));
     }
 
     return (
@@ -22,16 +32,26 @@ const Login = (props:any) => {
                     <Form style={{color: "white"}}>
                         <Form.Field>
                             <label style={{color: "white"}}>Username</label>
-                            <Input placeholder='Username/Email' />
+                            <Input 
+                                type="email"
+                                placeholder="Enter Email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)} 
+                            />
                         </Form.Field>
                         <Form.Field>
                             <label style={{color: "white"}}>Password</label>
-                            <Input placeholder='Password' />
+                            <Input 
+                                type="password" 
+                                placeholder='Password'
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)} 
+                            />
                         </Form.Field>
                         <Form.Field>
                         {/* Todo: implement forgot password */}
                         </Form.Field>
-                        <Button color="orange" type='submit' onClick={loginUser}>Login</Button>
+                        <Button color="orange" type='submit' onClick={loginHandler}>Login</Button>
                     </Form>
                 </div>
             </div>
