@@ -10,17 +10,25 @@ class UserController{
         const { email, password } = req.body;      
         const user = await User.findOne({ email });
 
-        if (user && matchPassword(user.password, password) && user.email === email){
-            const token = jwt.sign({ user: user._id }, process.env.JWT as string);
+        if(user){
 
-            res.json({
-                _id: user._id,
-                name: user.name,
-                email: user.email,
-                token: token
-            });
+            const isMatch = await bcrypt.compare(password,user.password);            
+
+            if(isMatch){
+                const token = jwt.sign({ user: user._id }, process.env.JWT as string);
+
+                return res.status(200).json({
+                    _id: user._id,
+                    name: user.name,
+                    email: user.email,
+                    token: token
+                }); 
+            } else {
+                return res.status(401).json({error: "Invalid Password"});
+            };
+            
         } else {
-            res.status(401).json({error: "Verify your access data, Unauthorized Access."});
+            return res.status(400).json({error: "User does not exists"});
         };
     }
 
