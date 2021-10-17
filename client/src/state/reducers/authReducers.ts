@@ -1,11 +1,24 @@
-import { LOGIN_USER, AUTH_USER } from "../constants/authConstants";
+import { LOGIN_USER, LOGIN_FAILED, LOGIN_START, LOGIN_FAIL } from "../constants/authConstants";
 
 export const authReducer = (state = {}, action: any) => {
   switch (action.type) {
+    case LOGIN_START:
+      return {
+        loading: true,
+    };
     case LOGIN_USER:
-      return { userInfo: action.payload };
-    case AUTH_USER:
-      return { isAuth: false };
+      return { 
+        ...state,
+        isAuth: true,
+        userInfo: action.payload,
+        error: null,
+        loading: false, 
+      };
+    case LOGIN_FAILED:
+      return { 
+        isAuth: false,
+        error: action.payload  
+      };
     default:
       return state;
   }
