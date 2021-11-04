@@ -1,4 +1,4 @@
-import { LOGIN_USER, LOGIN_FAILED, LOGIN_START, LOGIN_FAIL } from "../constants/authConstants";
+import { LOGIN_USER, LOGIN_FAILED, LOGIN_START, LOGOUT_USER } from "../constants/authConstants";
 
 export const authReducer = (state = {}, action: any) => {
   switch (action.type) {
@@ -19,6 +19,11 @@ export const authReducer = (state = {}, action: any) => {
         isAuth: false,
         error: action.payload  
       };
+    case LOGOUT_USER:
+      return {
+        ...state,
+        userInfo: []
+      }
     default:
       return state;
   }

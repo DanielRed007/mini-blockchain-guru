@@ -1,4 +1,4 @@
-import { LOGIN_USER, LOGIN_FAILED, LOGIN_START } from "../constants/authConstants";
+import { LOGIN_USER, LOGIN_FAILED, LOGIN_START, LOGOUT_USER } from "../constants/authConstants";
 import axios from "axios";
 
 export const loginUser = (email:string,password:string) => async (dispatch: any) => {
@@ -32,4 +32,12 @@ export const loginUser = (email:string,password:string) => async (dispatch: any)
             payload: error.message
         });
     }
+};
+
+export const registerUser = () => {};
+
+export const logoutUser = () => async (dispatch: any) => {
+    dispatch({
+        type: LOGOUT_USER
+    });
 };

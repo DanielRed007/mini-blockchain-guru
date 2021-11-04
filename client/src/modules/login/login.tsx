@@ -1,20 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { Container, Input, Button, Form } from 'semantic-ui-react';
 import { loginUser } from "../../state/actions/authActions";
+import { useUserInfo } from "../../util/hooks/useUserInfo";
 
 const Login: React.FC = (props:any) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    useEffect(() => {},[])
+    const { isAuth, userInfo, loading, error } = useSelector((state:any) => state.auth);
+
+    useEffect(() => {
+        checkUserStatus();
+    },[]);
 
     const dispatch = useDispatch();
     const history = useHistory();
-    const location = useLocation();
 
-    const { isAuth, loading, userInfo, error } = useSelector((state:any) => state.auth);
+    
+    // Custom hook for fetching user information
+    // const userInfoData = useUserInfo();
+
+    const checkUserStatus = () => {
+        if(!isAuth){
+            console.log("ReRoute!!!!");
+        }
+    };
     
     const loginHandler = (e: React.FormEvent<any>) => {
         e.preventDefault();

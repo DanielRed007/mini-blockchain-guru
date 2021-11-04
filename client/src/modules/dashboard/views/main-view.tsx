@@ -1,16 +1,28 @@
 import React, { useEffect } from 'react';
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Button } from 'semantic-ui-react'
+import { logoutUser } from "../../../state/actions/authActions";
+
 
 const MainView: React.FC = () => {
-    const location = useLocation(); 
+    const history = useHistory(); 
+    const dispatch = useDispatch();
     
-    useEffect(() => {
-        console.log(location)
-    },[])
+    const { userInfo } = useSelector((state:any) => state.auth);
+
+    useEffect(() => {},[]);
+
+    const handleLogOutUser = () => {
+        dispatch(logoutUser());
+        history.push("/");
+    };
 
     return (
         <div>
-            Hello User!
+            { userInfo ? <h1>Hello {userInfo.name} !!</h1> : null }
+
+            <Button onClick={handleLogOutUser} primary>Logout User</Button>
         </div>
     )
 }
