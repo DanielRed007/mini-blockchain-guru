@@ -7,7 +7,6 @@ export const useFetchData = () => {
     useEffect(() => {
         const getData = async() => {
             const { data } = await axios.get("http://localhost:5000/api/currency/info/all");
-            // console.log(data);
             setResponse(data);
         }
 

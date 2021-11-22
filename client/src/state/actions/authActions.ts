@@ -37,6 +37,8 @@ export const loginUser = (email:string,password:string) => async (dispatch: any)
 export const registerUser = () => {};
 
 export const logoutUser = () => async (dispatch: any) => {
+    localStorage.removeItem("userInfo");
+
     dispatch({
         type: LOGOUT_USER
     });

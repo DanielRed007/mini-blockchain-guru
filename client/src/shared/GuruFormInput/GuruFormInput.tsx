@@ -23,7 +23,6 @@ const GuruFormInput: React.FC<GuruFormInputProps> = ({ type, className, disabled
   }, []);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value);
     setInputValue(event.target.value);
   }
 

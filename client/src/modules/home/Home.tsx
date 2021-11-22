@@ -3,6 +3,7 @@ import { Container } from 'semantic-ui-react';
 import Navbar from "../../shared/navbar/Navbar";
 import { HomeHeader } from "./views/HomeHeader";
 import { GoalsHeader } from "./views/GoalsHeader";
+import { HomeLiveTable } from "./views/HomeLiveTable";
 
 const Home: React.FC = (props:any) => {
     return (
@@ -11,6 +12,7 @@ const Home: React.FC = (props:any) => {
                 <div style={{ width: "70%", margin: "0 auto"}}>  
                     <Navbar />             
                     <HomeHeader />
+                    <HomeLiveTable />
                 </div>
             </Container>
             <Container style={{}} fluid>

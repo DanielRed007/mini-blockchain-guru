@@ -4,10 +4,12 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import { testReducer } from "./reducers/testReducers";
 import { authReducer } from "./reducers/authReducers";
+import { cryptoCurrencyReducer } from "./reducers/cryptoCurrencyReducer";
 
 const reducer = combineReducers({
     test: testReducer,
-    auth: authReducer
+    auth: authReducer,
+    cryptocurrency: cryptoCurrencyReducer 
 });
 
 const userInfoFromStorage = localStorage.getItem("auth")

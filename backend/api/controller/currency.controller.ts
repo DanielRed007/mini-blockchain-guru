@@ -28,11 +28,10 @@ class CurrencyController{
 
     async getCurrencies(req:Request,res:Response){
         try {
-            const currencies = await Currency.find();
+            const currencies = await Currency.find().limit(20);
             if(!currencies){
                 return res.status(404).json({message: "No currencies at the moment"});
             }
-
             res.status(200).json(currencies);
         } catch (error) {
             return res.status(500).json(error);
